@@ -1,0 +1,28 @@
+load("simplex")$
+load (lbfgs);
+load (augmented_lagrangian);
+
+A:500$
+c:0.2777$
+y(A,c,v0,x):=A*%e^(-c*x/v0)/(1+%e^(-c*x/v0));
+/*minimize_lp(diff(y(A,c,55,x),x));
+sol:augmented_lagrangian_method(y(A,c,55,x), [x], [x>1], [1, 1], iprint=[0,0]);*/
+inclinacion(x):=diff(y(A,c,55,x),x);
+/*TODO calcular valor tg min**/
+min_inclinacion:bfloat(atan(-0.63)*180/%pi);
+
+plot2d(
+[y(A,c,55,x),y(A,c,100,x),y(A,c,150,x),y(A,c,220,x)],
+[x,-5000,5000],
+[legend,"v0=55","v0=100","v0=100","v0=220"]);
+
+plot2d(
+[diff(y(A,c,55,x),x),diff(y(A,c,55,x),x,2)],
+[x,-5000,5000],
+[legend,"derivada 1","derivada 2"]);
+
+
+/*isometria(0,0);
+isometria(1,0);
+isometria(0,0);*/
+

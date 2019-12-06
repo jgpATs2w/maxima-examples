@@ -1,0 +1,24 @@
+load("diag")$
+M: matrix([1,0,0],[a,1/2,1/2],[b,sqrt(3)/2,1/2]);
+P: matrix([0],[0],[1]);
+Q: matrix([0],[1],[1]);
+P1: M.P;
+Q1: M.Q;
+
+disp("P'",P1);
+disp("Q'",Q1);
+
+polinomio_caracteristico:factor(charpoly(M,t));
+J:transpose(dispJordan(jordan(M)));
+
+disp("Polinomio caracteristico:",polinomio_caracteristico);
+disp("Autovalores y su multiplicidad:",eigenvalues(M));
+disp("Autovalores y bloques de Jordan asociados:",jordan(M));
+disp("Matriz de Jordan (J):",J);
+
+plot2d(polinomio_caracteristico,[t,-20,20]);
+
+/*isometria(0,0);
+isometria(1,0);
+isometria(0,0);*/
+

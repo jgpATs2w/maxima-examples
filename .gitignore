@@ -1,0 +1,7 @@
+Makefile
+Makefile.in
+out/
+*aux
+.log
+.syntex.gz
+*zip

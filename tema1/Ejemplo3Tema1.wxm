@@ -1,0 +1,16 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.7 ] */
+
+/* [wxMaxima: input   start ] */
+producto:1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for a:1 thru 12 do
+for b:a+1 thru 13-a do 
+(c:15-a-b, if c#a and c#b and a*b*c>producto then 
+(producto:a*b*c, display([a,b,c],producto)));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

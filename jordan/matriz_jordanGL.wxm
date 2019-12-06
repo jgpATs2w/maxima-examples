@@ -1,0 +1,19 @@
+load("diag")$
+
+jordan_gl(M):=block(
+    disp("Polinomio caracteristico:",factor(charpoly(M,t))),
+    disp("Autovalores y su multiplicidad:",eigenvalues(M)),
+    disp("Autovalores y bloques de Jordan asociados:",jordan(M)),
+    J:transpose(dispJordan(jordan(M))),
+    disp("Matriz de Jordan:",J)
+)$
+
+A: matrix(
+ [1/2, 1/2],
+ [1/2, sqrt(3)/2]
+);
+
+jordan_gl(A);
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

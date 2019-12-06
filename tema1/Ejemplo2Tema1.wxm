@@ -1,0 +1,37 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.7 ] */
+
+/* [wxMaxima: input   start ] */
+t:x/(vo*cos(alfa));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y:vo*sin(alfa)*t-g*t^2/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+vo:10;g:10;alfa1:%pi/3;alfa2:%pi/6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+d:(2*cos(alfa1)*sin(alfa1)*vo^2)/g;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y1:(sin(alfa1)*x)/cos(alfa1)-(g*x^2)/(2*cos(alfa1)^2*vo^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y2:(sin(alfa2)*x)/cos(alfa2)-(g*x^2)/(2*cos(alfa2)^2*vo^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([y1,y2], [x,0,d])$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
