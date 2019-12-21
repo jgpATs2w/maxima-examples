@@ -19,26 +19,18 @@ load("diag")$
 
 
 jordan_gl(M):=block(
+disp("++++++++++++++++++++++++++++++++++++++++++++++++"),
+disp("Matriz aplicacion:", M),
+disp("++++++++++++++++++++++++++++++++++++++++++++++++"),
 disp("Polinomio caracteristico:",factor(charpoly(M,t))),
 disp("Autovalores y su multiplicidad:",eigenvalues(M)),
+disp("Autovectores:",eigenvectors(M)),
 disp("Autovalores y bloques de Jordan asociados:",jordan(M)),
+disp("Rango J:",rank(jordan(M))),
+disp("Rango J^2:",rank(jordan(M)^2)),
 J:transpose(dispJordan(jordan(M))),
 disp("Matriz de Jordan:",J)
 )$
-
-
-/*
-Calcula el polinomio caracteristico
-*/
-
-/*
-Autovalores: indica cuales son los [autovalores] y su [multiplicidad algebraica]
-*/
-
-/*
-Autovalores y bloques de Jordan asociados: [autovalor,bloques de Jordan]
-*/
-
 
 A: matrix(
  [3,1,-1,-1],
@@ -85,7 +77,7 @@ E: matrix(
 jordan_gl(A);
 
 
-
+/*
 jordan_gl(B);
 
 
@@ -124,7 +116,4 @@ I4: matrix(
 
 
 rank(D+I4);
-
-
-/* Maxima can't load/batch files which end with a comment! */
-"Created with wxMaxima"$
+*/
