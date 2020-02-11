@@ -1,0 +1,12 @@
+/*FUNCIONES PARA ECUACIONES*/
+kill(all)$
+
+algsys([x^2+y^2=4,x+y=1],[x,y]);/* resolución de ecuaciones polinómicas*/
+
+[allroots(x^3-3*x^2+28*x-26),realroots(x^3-3*x^2+28*x-26)]/* raices de funciones polínómicas*/;
+
+eliminate([x^2+y^2=4,x+y=1],[x]);/* elimina variables de ecuaciones, se asume que el resultado es igual a cero*/
+
+solve(%);/* resuelve ecuación*/
+
+linsolve([x+y=3,2*x-y=3],[x,y]);/*resuelve sistema lineal de ecuaciones */

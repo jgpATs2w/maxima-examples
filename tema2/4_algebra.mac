@@ -1,0 +1,17 @@
+/* EJEMPLOS OTRAS FUNCIONES ORIENTADAS AL ÁLGEBRA*/
+kill(all)$
+
+[abs(2-21/2),abs(3+4*%i)];
+
+fpprec:4$
+
+[bfallroots(x^2+x-1),bfallroots(x^2+x+1)]/* aproximación de raíces reales y complejas , salida big float (hace uso de variable fpprec)*/;
+
+[allroots(x^2+x-1),allroots(x^2+x+1)];/* aproximación de raíces reales y complejas , salida float (no hace uso de variable fpprec)*/;
+
+[solve(x^2+x-1=0,x),solve(x^2+x+1=0,x)];
+
+a:1$b:3$
+
+salida:block([a,b],a:x+y,b:2,a^b)$/* evalua las expresiones secuencialmente y da como resultado la últilma expresión.
+Las variables definidas dentro del block son locales */

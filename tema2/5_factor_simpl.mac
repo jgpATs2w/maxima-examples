@@ -1,0 +1,22 @@
+kill(all)$
+
+a:1$b:3$
+
+salida:block(a:x+y,b:2,a^b)$
+
+salida;a;b;
+
+expand(salida);
+
+factor(%);
+
+[ratsimp((x^2-1)/(x^2+2*x+1)),fullratsimp(log(x^2-1)-log(x-1)),radcan(log(x^2-1)-log(x-1))]/* simplificar expresions y sus subexpresiones */ ;
+
+[gcd(x^2-1,2*x^2+4*x+2),lcm(x^2-1,2*x^2+4*x+2)];/* máximo común divisor y mínimo común múltiplo*/
+
+[quotient(x^2-2*x+5,x-1),remainder(x^2-2*x+5,x-1),divide(x^2-2*x+5,x-1)];/* cociente y resto de una división*/
+
+[max(2,5,8.2,3), min(2,5,8.2,3)];/* maximo y mínimo de un conjunto de valores */
+
+a:x=5;
+lhs(a);rhs(a);/* Dada una igualdad, seleccionar el primer miembro o segundo miembro */

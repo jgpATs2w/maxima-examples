@@ -1,0 +1,20 @@
+/* FUNCIONES PARA POLINOMIOS*/
+kill(all)$
+
+P1(x):=x^3-7*x+6; P2(x):=x-1;P3(x):=x^2-1;
+
+coeff(P1(x),x,2);
+
+F:factor(P1(x));
+
+[divide(P1(x),P2(x),x),divide(P1(x),P3(x),x)];
+
+[quotient(P1(x),P2(x),x),remainder(P1(x),P2(x),x)];
+
+remainder(x^2-x-1,x-1,x);
+
+F;expand(F);
+
+factor(%);
+
+[gcd(P1(x),P3(x)),lcm(P1(x),P3(x))];

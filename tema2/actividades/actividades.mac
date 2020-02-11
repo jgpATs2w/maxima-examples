@@ -1,0 +1,392 @@
+/* ACTIVIDAD 1 Dado un numero n, por ejemplo 5, obtener una matriz cuadrada
+ que represente las tablas de multiplicar de cualquier nÃºmero entre 0 y n. */
+kill(all)$
+n:read("introducir numero");
+g[i,j]:=i*j;
+G:genmatrix(g,n,n);
+
+ListaG:args(G);
+
+ListaG1:makelist(cons(ListaG[i][1],ListaG[i]),i,1,n);
+
+ListaG2:copylist(cons(ListaG1[1],ListaG1));
+
+ListaG2[1][1]:"*"$ListaG2;
+
+resultado:apply(matrix,ListaG2);
+
+/*ACTIVIDAD 2 cos(x^3+e^(x-y) )/(ln(x^2*y))*/
+
+f(x,y):=cos(x^3+%e^(x-y))/(log(x^2*y));
+'valor_exacto=f(1,2);
+'valor_aproximado=f(1,2),numer;
+
+
+/*ACTIVIDAD 3: CIRCUNFERENCIA Y ESFERA*/
+
+r:5$
+plot2d([parametric,x:r*cos(t),y:r*sin(t)],[t,0,2*%pi]);
+kill(all)$
+
+r:5$
+x:r*cos(t)$
+y:r*sin(t)$
+plot2d([parametric,x,y],[t,0,2*%pi]);
+
+kill(all)$
+
+plot2d([sqrt(25-x^2),-sqrt(25-x^2)],[x,-5,5]);
+
+r:5$
+plot3d([x:r*cos(alfa)*sin(beta),y:r*cos(alfa)*cos(beta),z:r*sin(alfa)],
+[alfa,0,2*%pi],[beta,-%pi/2,%pi/2],
+[plot_format,xmaxima]);
+
+r:5$
+plot3d([x:r*cos(alfa)*sin(beta),y:r*cos(alfa)*cos(beta),z:r*sin(alfa)],
+[alfa,0,2*%pi],[beta,-%pi/2,%pi/2],
+[plot_format,gnuplot]);
+
+/*ACTIVIDAD 4
+Generar un nÃºmero aleatorio entre 1 y 100
+random(x) si x es natural, se genera un natural entre 0 y x-1 ambos inclusive.
+Si x es decimal devuelve un número positivo menor que x.
+   */
+
+a=1+random(99);
+
+a=1+random(99);
+
+floor(1+random(99.9999999999));
+
+/*
+Se tira un dado diez veces consecutivas, 
+calcular el numero de veces que sale 5. 
+Calcular el valor medio de la puntuaci0n de salida.
+  */
+
+
+
+tiradas:makelist(ceiling(random(float(6-10^(-20)))),k,1,10);
+/*alternativa makelist(1+random(6),i,1,10*/
+
+nocinco:delete(5,tiradas);
+
+'numero_5=res:length(tiradas)-length(nocinco);
+
+'valor_medio=media:apply("+",tiradas)/length(tiradas),numer;
+
+kill(all)$
+
+/*
+ACTIVIDAD 5
+(V0*(i(1+i)^n))/((1+i)^n-1)*/
+
+V0:8000;
+I:8.5/100;
+i:I/12;
+n:5*12;
+c:V0*i*(1+i)^n/((1+i)^n-1);
+
+/*
+ACTIVIDAD 6
+Se sabe que el campo elÃ©ctrico creado en un punto P(x,y) por dos cargas,
+q1 situada en (x1,y1) y q2 en (x2,y2) viene dado por la expresiÃ³n:
+E =k(q1/|r1p|^2)u1p+k(q1/|r2P|^2)u2p
+Siendo r1p=rp-r1; u1p vector unitario en direcciÃ³n y sentido r1p.
+r2p=rp-r2; u2p vector unitario en direcciÃ³n y sentido r2p.
+K=9*10^9 Nm^2/C^2
+Siendo q1 de 10 ÂµC situada en (0,1)
+q2 de -30 ÂµC situada en (2,0).
+a) Calcular el campo elÃ©ctrico en (1,1).
+b) Sabemos que si en (1,1) ponemos una carga q3=-20 ÂµC; dicha se ve sometida a 
+una fuerza F=q3*E(1,1). Intentar dibujar el vector F.
+c) Representar la funciÃ³n potencial creado por las dos cargas en un punto P(x,y) :
+ V=k*q1/r1P+k*q2/r2P.   */
+
+/*
+Introducir los valores de q1(x1,y1) y r1
+Introducir los valores de q2(x2,y2) y r2
+Introducir coordenadas de P(x,y)*/
+
+kill(all)$
+
+q3:(-20)*10^(-6)
+
+'r1p=r1p:rp-r1;
+'r2p=r2p:rp-r2;
+
+modulo(v):=sqrt(v[1]**2+v[2]**2);
+unitario(v):=v/modulo(v);
+
+'Ep=Ep:(k*q1*unitario(r1p)/modulo(r1p)**2+k*q2*unitario(r2p)/modulo(r2p)**2);
+'Ep=float(Ep);
+
+Fuerza:float(q3*Ep);
+
+F10:10*Fuerza$
+
+[F1,F2]:[round(F10[1]),round(F10[2])]$
+
+F:float([F1/10,F2/10]);
+
+load(draw);
+
+draw2d(xrange=[-4,4],yrange= [-4,4],head_length = 0.2,
+xaxis=true,yaxis=true,vector(rp,F));
+
+Potencial(x,y):=(9*10^9*10*10^(-6)/sqrt((x-0)^2+(y-1)^2)+9*10^9*(-30)*10^(-6)/sqrt((x-2)^2+(y-0)^2));
+
+wxplot3d(Potencial(x,y),[x,-3,3],[y,-3,3]);
+
+contour_plot (Potencial(x,y), [x, -2, 4], [y, -3, 3],
+[gnuplot_preamble, "set cntrparam levels 15"]);
+
+/* 
+ACTIVIDAD 7
+Si un día aparece nublado; la probabilidad de que el día siguiente aparezca nublado es 0.6,
+de que llueva 0.1 y que salga el sol 0.3. 
+
+
+Si un día aparece lluvioso; la probabilidad de que el día siguiente aparezca nublado es 0.2,
+de que llueva 0.55 y que salga el sol 0.25.
+
+
+Si un día aparece soleado; la probabilidad de que el día siguiente aparezca nublado es 0.1,
+de que llueva 0.15 y que salga el sol .75.
+
+
+Llamamos a la matriz anterior A que indica la probabilidad de la clase de tiempo que hará el día siguiente.
+
+
+hoy\ma     nub     llu     sol
+ nub      ! 0.6     0.1     0.3    !
+ llu      ! 0.2     0.55    0.25   !
+ sol      ! 0.1     0.15    0.75   !
+
+
+A^2 será la probabilidad de clase de tiempo que hará dentro de dos días y así sucesivamente A^3, A^n.
+
+
+Resolver:
+
+
+a.-Calcular la probabilidad de que haga sol dentro de tres días sabiendo que hoy llueve; la de que haga sol
+
+
+si hoy hace sol; la de que haga sol si hoy está nublado.
+
+
+b.-Sabiendo que hoy es lunes y está nublado haced una predicción de tiempo para el sábado.
+
+
+c.-Intenta hacer una predicción de tiempo para dentro de n días. (Haz que Máxima pida el valor
+
+
+y devuelva la matriz predicción de tiempo).
+
+
+d.-Realiza un gráfico que represente la previsión de 10 días para que el día sea soleado siendo hoy nublado.*/
+
+
+/* Entrada de la matriz de datos.*/
+
+A:matrix([0.6,0.1,0.3],[0.2,0.55,0.25],[0.1,0.15,0.75]);
+
+/* Prediccion metereologica a 3 dias vista. A^^3*/
+
+A3:A^^3;
+
+/*
+Prediccion metereologica a 3 diaa vista si hoy llueve; fila 2 de A^^3
+Prediccion metereologica de que el dia sea soleado a 3 dias vista, en funcion del dia actual.*/
+
+row(A3,2)    /* tiempo que hara a 3 dias vista si hoy llueve*/;
+col(A3,3)     /* prob de que dentro de 3 el dias sea soleado */;
+
+/* 
+Sabiendo que hoy llueve, probabilidad de que haga sol dentro de 3 dias
+Elemento (2,3) de A^^3; Igualmente para las demas peticiones.*/
+
+A3[2,3]   /* Hoy llueve, prob que haga sol dentro de 3 dias*/;
+A3[3,3]   /* hoy hace sol, prob que haga sol dentro de 3 dias*/;
+A3[1,3]   /* hoy esta nublado, prob que haga sol dentro de 3 dias */;
+
+/* Prediccion para el sabado (dentro de 5 dias) A^^5*/
+
+A5:A^^5;
+
+/* Prediccion metereologica para dentro de n dias. A^^n */
+
+read("Introduzca el numero de dias a transcurrir");
+
+dias:%;
+
+print("la prediccion para dentro de",dias,"es",A^^dias)$
+
+/* 
+Preparar para graficar la función
+Creamos una lista de matrices*/
+
+L:makelist(A^^k,k,1,10) 
+/* lista que muestra predicciÃ³n para n=1...10*/;
+
+L[1][1,1]   
+/* L[1] es el primer elemento, una matriz, de la lista L
+              L[1][1,1] es el elemento (1,1) de la matriz L[1]   */;
+/* 
+Vamos a representar la previsión para los primeros 10 días
+De que salga soleado, si hoy es nublado.*/
+
+VALORESX:makelist(x,x,1,10) /* nÃºmero de dÃ­as*/;
+
+VALORESY:makelist(L[k][1,3],k,1,10) 
+/* de la lista de matrices, muestra
+   los elementos (1,3) */;
+
+wxplot2d([discrete,VALORESX,VALORESY],[style,points]);
+
+kill(all)$
+/* 
+ACTIVIDAD 8
+Tres bancos (Banco1, banco 2 y banco 3) ofrecen
+tres productos financieros (P1, P2, P3) cada producto
+con una rentabilidad anual (valor unitario) que se indica abajo.
+ Prod\Banc   B1      B2      B3
+ P1      ! 0.06     0.04    0.05   !
+ P2      ! 0.02     0.05    0.05   !
+ P3      ! 0.03     0.02    0.01   !
+Si invertimos 1000  en cada producto y cada banco
+¿Qué montante tendremos al cabo de 5 años de cada producto?
+Generalizar para cantidades diferentes invertidas en cada producto*/
+
+/* Creemos la matriz de porcentajes anuales*/
+I:matrix([0.06,0.04,0.05],[0.02,0.05,0.05],[0.03,0.02,0.01]);
+
+/* 
+Dada una cantidad C al i% anual compuesto durante n aÃ±os obenemos:
+M=C*(1+i/100)^n */
+M1:1.+I   /* sumamos 1 a cada elemento de la matriz I  */;
+
+M5:M1^5 
+/* cada elemento de la matriz lo eleva a 5 */;
+
+M:1000*M5;
+
+/* Podemos generalizar para cantidades diferentes en la inversiÃ³n de cada producto.*/
+P:matrix([1000,2000,3000],[4000,5000,6000],[7000,8000,9000]);
+/* Realizamos el producto de matrices elemento a elemto (no el producto habitual)*/
+
+P*M5;
+
+kill(all)$
+/* 
+ACTIVIDAD 9
+Deseamos guardar información:
+de alumnos, edad de alumnos y nota que va obteniendo el alumno.
+Define una estructura de datos para tratar de guardar información.
+Crea dos registros con los datos: 
+Juan Perez, 30 años, notas: 5,6,8,9.
+José García, 25 años, notas: 7,9,6,9
+Mostrar los registros y después añadir una nota más (10) a José García.
+Calcular media*/
+
+/* Utilizamos el tipo estructura con los campos nombre, domicilio y notas.*/
+
+defstruct(alumno(nombre, edad,notas));
+
+structures;
+/* 
+AÃÂ±adimos los alumnos dados como dos registros nuevos.
+   */
+alumno1:new(alumno("Juan Perez", 30, [5, 6,8,9]));
+alumno2:new(alumno("Jose Garcia", 25, [7,9,6,9]));
+
+alumno1;
+
+structures;
+/* 
+Listamos el campo que nos interese de un registro.
+   */
+alumno1@nombre;
+
+/* 
+Observemos que el siguiente registro es una lista
+Podremos tratarlo como tipo lista.
+   */
+alumno1@notas;
+
+reverse(alumno1@notas);
+/* 
+Insertamos una nota nueva a la lista de notas del alumno 1.
+Lo asignamos a una variable para poder guardarlo en dicho campo.
+   */
+v:cons(10,alumno1@notas);
+
+alumno1@notas:v;
+
+Medianotas:apply("+",alumno1@notas)/length(alumno1@notas),numer;
+
+[alumno1@nombre, alumno1@edad, alumno1@notas];
+
+Kill(all)$
+/*
+ACTIVIDAD 10
+Cierta magnitud I se amortigua en el plano según la siguiente ley  I=10*%e^(-0.2*sqrt(x^2+y^2))
+
+a)	Dibuja unngráfico que refleje los valores de la temperatura
+en función de los puntos de la placa.
+
+b)dibuja un gráfico de curvas de nivel.
+   */
+
+/* 
+Definimos la funciÃÂ³n I(x,y)
+I=10*%e^(-0.2*sqrt(x^2+y^2))
+   */
+
+I(x,y):=10*%e^(-0.2*sqrt(x^2+y^2));
+
+/* 
+Gráfico 3D
+   */
+plot3d(I(x,y),[x,-10,10],[y,-10,10])$
+
+/* 
+GrÃÂ¡fico de contorno
+   */
+contour_plot(I(x,y),[x,-10,10],[y,-10,10]);
+
+contour_plot(I(x,y),[x,-10,10],[y,-10,10],
+[gnuplot_preamble, "set cntrparam levels 22"]);
+
+set_plot_option([gnuplot_preamble, "set cntrparam levels 10"])$
+
+contour_plot(I(x,y),[x,-10,10],[y,-10,10]);
+
+/* 
+GrÃÂ¡fico de densidad.
+   */
+wxplot3d (I(x,y), [x, -5, 5], [y, -5, 5],[gnuplot_preamble,"set pm3d map"]);
+
+kill(all)$
+
+/* 
+ACTIVIDAD 11.- Dado un triángulo de lados a, b, c dibujarlo. 
+   */
+
+triangulo:[8,6,12];
+triangulo:sort(triangulo);
+a:triangulo[1];b:triangulo[2];c:triangulo[3];
+suma:a+b;
+
+if is(c>suma) then disp("no se puede dibujar el triangulo") else disp("seguir");
+
+alfa:acos((b^2+c^2-a^2)/(2*b*c)),numer;
+beta:acos((a^2+c^2-b^2)/(2*a*c)),numer;
+C:[b*cos(alfa),b*sin(alfa)],numer;
+
+A:[0,0];
+B:[c,0];
+
+wxplot2d([discrete,[A,C,B,A]],[style,[lines,5,2]]);

@@ -1,0 +1,19 @@
+/* FUNCIONES DE COMANDOS. ENTRADA SALIDA*/
+kill(all)$
+
+apropos("list");
+/* buscar funciones o palabras reservadas de maxima que contengan la subcadena indicada*/
+
+apropos("matrix");
+
+example();
+/*mostrar los ejemplos que dispone maxima */
+
+example(algsys);
+
+y:10;
+
+read("escriba un valor");
+/*introducir un valor desde teclado, finalizar con control + enter*/
+
+y:%;

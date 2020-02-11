@@ -1,0 +1,8 @@
+/*ACTIVIDAD*/
+kill(all)$
+
+plot3d(x^2 + y^2, [x, -4, 4], [y, -4, 4]);
+contour_plot (x^2 + y^2, [x, -4, 4], [y, -4, 4]);
+
+contour_plot (x^2 + y^2, [x, -4, 4], [y, -4, 4],
+    [gnuplot_preamble, "set cntrparam levels 12"]);

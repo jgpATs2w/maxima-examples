@@ -1,0 +1,4 @@
+   limit(x*log(x),x,0,plus);
+   limit((1+x)^(1/x),x,0);
+   limit(%e^x/x,x,inf);
+   limit(sin(1/x),x,0);

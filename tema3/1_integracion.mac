@@ -1,0 +1,6 @@
+integrate(sin(x)^3,x)
+
+/* integration of a non-tabulated function */
+1/(x^3+a*x^2+x);
+integrate(%,x);
+diff(%,x),ratsimp;

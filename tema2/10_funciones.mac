@@ -1,0 +1,49 @@
+/*Funciones definidas por el usuario*/
+kill(all)$
+
+/*definir funciónR-->R */;
+f(x):=x^3+x-2 ;
+define(g(x),x^3+x-2);
+[f(0),g(0)];
+
+/*definir funciónRxR-->R */;
+fxy(x,y):=x+3*y;
+define(gxy(x,y),x+3*y) ;
+[fxy(1,1),gxy(1,1)];
+
+/*definir función de RxR -->RxR*/
+f3(x,y):=[x+y,x*y];
+define(g3(x,y),[x+y,x*y])
+[f3(1,2),g3(1,2)];
+
+[f(2),g(2),fxy(1,1),gxy(1,1)];
+  /* borramos la función f */
+remfunction(f,g,fxy,gxy);
+[f(2),g(2),fxy(1,1),gxy(1,1)];
+
+/* listar funciones definidas */
+functions;
+
+/* borrar todas las funciones
+definidas */
+remfunction(all);
+functions;
+
+/* sintaxis if then else*/;
+f(x):=if x<=0
+then x^2-10
+else abs(x^2-10);
+f(-2);
+f(2);
+
+h(x):=sin(x)+cos(x);
+a:%pi;
+h(a);
+display(h(a));
+/*presentar por pantalla*/;
+print("el valor de sin(",a,")+cos(",a,")=",h(a));
+
+read("introduzca un valor y pulse control+enter");
+
+entrada:%;
+print("el valor introducido anteriormente es",entrada)$

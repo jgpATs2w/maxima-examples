@@ -1,0 +1,60 @@
+kill(all)$
+A:matrix([1,2],[3,-1]);
+addrow(A,[1,0]);
+addcol(A,[1,0],[0,0]);
+
+A;adjoint(A);transpose(A);
+
+A;transpose(adjoint(A))/determinant(A);
+invert(A); A^^(-1);
+
+A:matrix([1,2],[3,-1]);col(A,1);row(A,2);
+
+A:matrix([1,2],[3,-1]);P:charpoly(A,x);solve(P);eigenvalues(A);
+
+eigenvectors(A);
+
+ident(2);
+
+M:matrix([2,1,1],[3,-1,0]);minor(M,1,2);
+
+rank(M);
+
+M;submatrix(1,M,2,3);
+
+M;triangularize(M);echelon(M);
+
+diagmatrix(2,c);
+
+zeromatrix(3,2);
+
+kill(all)$
+
+create_list(x^i+y^j,i,[0,1],j,[2,3,4]);
+
+/* Lista a partir de una expresión y un contador*/
+L1:makelist(1/n,n,1,5);
+L2:makelist([n,1/n],n,1,11,3);
+
+/* Lista formada por átomos */
+L2;L3:flatten(L2);
+
+/*  fórmula sucesión recurrente*/
+ a[1]:1;a[2]:1; a[n]:= a[n-2]+a[n-1];
+/* La lista de los 10 primeros términos */
+ L4:makelist(a[n],n,1,10);
+
+/*aplicar operador a elementos de la lista*/
+resultado:apply("+",[1,x,3,y]);
+
+/*aplicar función a elementos de la lista*/
+L4:map(sin,[1,%pi,3]);
+
+/*insertar perimer elemento en lista*/
+L2;push(elemento0,L2);L2;
+
+/*extraer primer elemento de lista*/
+L2;pop(L2)$L2;
+
+/*insertar último elemento a lista*/
+L2;L6:endcons(elementofinal,L2);

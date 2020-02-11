@@ -1,0 +1,191 @@
+
+/* GRÁFICOS CON MAXIMA*/
+
+/* GRÁFICOS 2D.*/
+
+/*
+Máxima accede a través de comandos a otros programas
+para la ejecución de gráficos
+(gnuplot, openmath (xmaxima), mgnuplot y geomview).
+gráficos con plot2d y plot2d
+plot2d([f1(x),f2(x)...],[x,a,b],opciones)
+gráfica de f1(x), f2(x)...
+muetra resultado en otra ventana.
+permite modificar algunos parámetros de la vista.
+plot2d([f(x)],[x,a,b]) --> gráfica de f(x)en [a, b];
+el resultado se muestra en la misma ventana.*/
+
+plot2d([sin(x)],[x,-2*%pi,2*%pi])
+/* representa sin(x) entre los valores -2pi i 2pi
+en una ventana diferente*/;
+
+plot2d([sin(x)],[x,-2*%pi,2*%pi])
+/* representa sin(x) entre los valores -2pi i 2pi */;
+
+/* definamos una función a trozos*/
+f(x):=if x<=0
+then x^2-1
+else abs(x^2-1) ;
+/* representa la función anterior*/
+plot2d([f(x)],[x,-2,2]) ;
+
+/*
+varios gráficos con plot2d y plot2d;
+plot2d([f1(x),f2(x),...],[x,a,b])
+--> Representar f,g,... en [a,b];
+gráfico en otra ventana.
+plot2d([f1(x),f2(x),...],[x,a,b])
+--> Representar f,g,... en [a,b];
+gráfico en la misma ventana.
+Se puede poner también un intervalo donde
+se muestre el rango de la función [y,c,d]
+pero no es necesrio.
+Introducido los valores [a,b] maxima calcula los
+valores de la función a mostrar.
+Se representarán las funciones según las opciones por defecto.*/
+
+plot2d([sin(x),sin(3*x),sin(4*x)],[x,-2*%pi,2*%pi])
+/* representa tres funciones en la misma ventana
+Los valores de x están en [-2%pi,2%pi] */;
+
+plot2d([sin(x),sin(3*x),sin(4*x)],[x,-2*%pi,2*%pi],[y,-2,0.5])
+/* representa tres funciones en la misma ventana
+Los valores de x están en [-2%pi,2%pi]
+Los valores de y están en [-2,1]*/;
+
+/*
+DIBUJAR POLIGONALES
+Diferentes opciones de plot2d()y plot2d().
+plot2d([discrete,[x1,x2,...],[y1,y2,...]],opciones)
+poligonal que une los puntos [x1,y1], [x2,y2],...
+plot2d([discrete,[[x1,y2],[x2,y2]... ..]],opc)
+poligonal que une los puntos [x1,y1], [x2,y2],...*/
+
+plot2d([discrete,[1,2,3,4],[1,-2,4,6]])
+/* poligonal que une los puntos (1,1),(2,-2),(3,4),(4,6) */;
+
+plot2d([discrete,[[1,1],[2,-2],[3,4],[4,6]]])
+/* poligonal que une los puntos (1,1),(2,-2),(3,4),(4,6) */;
+
+plot2d([discrete,[[-1,1],[2,-2],[3,4],[7,6]]],[x,-3,10],[y,-3,7])
+/* poligonal que une los puntos (1,1),(2,-2),(3,4),(4,6)
+ mostrando { 0<=x<=5; -3<=y<=7} */;
+
+
+/*
+Modificar el aspecto de la gráfica,
+añadimos un nuevo elmento
+[style, [lines,a,b]] modificar estido de línea.
+[style,[points,a,b,c]] dibujar vértices con cierto estilo.*/
+
+/* poligonal que une los puntos (1,1),(2,-2),(3,4),(4,6)
+mostrando { -3<=x<=9; -3<=y<=7}
+[style,[lines,a,b]]    a= grosor, b= color */
+plot2d([discrete,[[-1,1],[2,-2],[3,4],[7,6]]],[x,-3,9],[y,-3,7],
+[style,[lines,5,2]]);
+
+/*
+Dibujar los vértices de la poligonal anterior.
+Utilizar el elemento [style,points]
+   */
+
+/* dibujar puntos del plano (1,1),(2,-2),(3,4),(4,6)
+ mostrando en la ventana { -3<=x<=9; -3<=y<=7} */
+plot2d([discrete,[[-1,1],[2,-2],[3,4],[7,6]]],[x,-3,9],[y,-3,7],
+    [style,points]) ;
+plot2d([discrete,[[-1,1],[2,-2],[3,4],[7,6]]],[x,-3,9],[y,-3,7],
+    [style,lines]) ;
+/*
+MODIFICAR EL ASPECTO DE LOS PUNTOS,
+[style,[lines,a',b'],[points,a,b,c]]
+a=radio de los puntos 1,2,..
+b=color de los puntos 1,2,..
+c=forma de los puntos 1,2,..
+   */
+
+/* dibujar puntos del plano (1,1),(2,-2),(3,4),(4,6)
+ mostrando en la ventana { -3<=x<=9; -3<=y<=7}
+ cambiando el radio, el color y la forma de los puntos */
+plot2d([discrete,[[-1,1],[2,-2],[3,4],[7,6]]],[x,-3,9],[y,-3,7],
+        [style,[points,15,1,1]]);
+
+
+/*
+GRÁFICOS CON ECUACIONES PARAMÉTRICAS
+Representación en forma paramétrica.
+plot2d([parametric,x(t),y(t),[t,a,b]])
+gráfica de la curva [x(t),y(t)] en [t=a, t=b]
+   */
+
+
+/* representa (x(t),y(t))
+ para valores de t pertenecientes a [0,2%pi] */;
+plot2d([parametric,(cos(t)),(sin(t)),[t,0,2*%pi]],[x,-4/3, 4/3]);
+
+
+/*
+OTRAS OPCIONES GRÁFICAS QUE SE PUEDEN AÑADIR.
+[axes, symbol] --> Si symbol=true, se muestran los ejes.
+[box, symbol]--> Si symbol=true, se muestra el marco del gráfico.
+[legend, string_1, …, string_n] --> etiquetas para gráficos.
+[logx] --> dibuja el eje x en escala logarítmica.
+[logy] --> dibuja el eje y en escala logarítmica.
+[nticks, integer]-->
+integer=número de puntos inicial para la rutina que crea el gráfico.
+[psfile, string] -->
+guarda el gráfico con nombre string, en la carpeta indicada por variable maxima_tempdir
+[xlabel, string] -->
+nombre de etiqueta para primer eje.
+[ylabel, string] -->
+nombre de etiqueta para el segundo eje.
+[zlabel, string] --> nombre de etiqueta para el el tercer eje en plot3d().
+   */
+
+
+/* representa (x(t),y(t)) para valores de t pertenecientes a [0,2%pi]
+utiliza una precisión en la representación de 100 puntos */
+plot2d([parametric,(cos(t))^3,(sin(t))^3,[t,0,2*%pi],[nticks,100]],[x,-4/3, 4/3]);
+
+
+
+/* representa (x(t),y(t)) para valores de t pertenecientes a [0,2%pi]
+utiliza una precisión en la representación de 15 puntos.
+En versiones últimas de maxima hace caso omiso a la opción nticks*/
+plot2d([parametric,(cos(t))^3,(sin(t))^3,[t,0,2*%pi],[nticks,15]],[x,-4/3, 4/3]);
+
+
+
+/* representa (x(t),y(t)) para valores de t pertenecientes a [0,2%pi]
+utiliza una precisión en la representación de 100 puntos */
+plot2d([x^2],[x,-2,2],[y,-1,5],[xlabel,"EjeOX"],[ylabel,"EjeOY"],
+    [legend,"f(x)"]);
+
+
+
+plot2d( 3*cos(t),[t,0,2*%pi],
+    [gnuplot_preamble,"set polar; set size ratio 1"]);
+plot2d( 3*cos(t),[t,0,2*%pi]);
+/* gnupot_preamble envía a gnuplot comandos o instrucciones antes de realizar el gráfico*/
+
+/*GRÁFICOS 3D.*/
+
+/*
+gráfica de z=f(x,y) en [a,b]x[c,d] -->
+plot3d(f(x,y),[x,a,b],[y,c,d],opciones)
+wxplot3d(f(x,y),[x,a,b],[y,c,d],opciones)
+opciones:
+[plot_format, xmaxima]
+[plot_format, gnuplot]
+[plot_format, geomview] (linux)
+   */
+
+plot3d(x^2+y^2,[x,-2,2],[y,-2,2],[plot_format,xmaxima]);
+plot3d(x^2+y^2,[x,-2,2],[y,-2,2],[plot_format,gnuplot]);
+
+plot3d(x^2+y^2, [x,-2,2], [y,-2,2], [grid,10,10])
+/* gráfico de f(x,y)=x^2+y^2
+tomando 10 puntos para cada tramo de la rejilla */$
+
+wxplot3d(x^2+y^2, [x,-2,2], [y,-2,2], [grid,100,100])
+/* gráfico de f(x,y)=x^2+y^2
+tomando 100 puntos para cada tramo de la rejilla */$

@@ -1,0 +1,24 @@
+/* EJEMPLOS CON FUNCIONES TRIGONOMÉTRICAS*/
+kill(all)$
+
+alfa:float(%pi/3);
+
+[cos(alfa),sin(alfa),tan(alfa),sec(alfa),csc(alfa),cot(alfa)];
+
+[cos(%pi/3),sin(%pi/3),tan(%pi/3),sec(%pi/3),csc(%pi/3),cot(%pi/3)];
+
+[acos(0.5),asin(0.866),atan(1.732),asec(2.0),acsc(1.1547),acot(0.57735)];
+
+[acos(1/2), asin(sqrt(3)/2), atan(sqrt(3)), asec(2), acsc(2/sqrt(3)), acot(1/sqrt(3))];
+
+/*
+EJEMPLOS CON FUNCIONES HIPERBÓLICAS
+*/
+kill(all)$
+
+[cosh(1),sinh(1),tanh(1),sech(1),csch(1),coth(1)];
+
+[cosh(1.0),sinh(1.0),tanh(1.0),sech(1.0),csch(1.0),coth(1.0)];
+
+[acosh(1.54308),asinh(1.175201),atanh(0.761594),asech(0.64805),acsch(0.850918),acoth(1.31303)];
+

@@ -1,0 +1,24 @@
+
+/*
+ACTIVIDAD: ESFERA DE RADIO 2
+   */
+
+
+kill(all)$
+
+
+
+r:2;
+x:r*cos(a)*sin(b)$ y: r*sin(a)*sin(b)$ z: r*cos(b)$
+plot3d ([x, y, z], [a,0, 2*%pi],[b, 0, %pi],
+    [grid,60, 60],
+    [legend,"Esfera"]);
+
+
+
+r:2;
+x:r*cos(a)*sin(b)$ y: r*sin(a)*sin(b)$ z: r*cos(b)$
+plot3d ([x, y, z], [a,0, 2*%pi],[b, 0, %pi],
+    [grid,60, 60],
+    [legend,"Esfera"],
+    [plot_format, xmaxima]);

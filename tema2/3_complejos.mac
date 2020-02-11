@@ -1,0 +1,19 @@
+
+/* EJEMPLOS FUNCIONES ARGUMENTO NÚMEROS COMPLEJOS*/
+kill(all)$
+
+z:1+%i;
+
+[z^3,z1:expand(z^3)];/*expadir una expresión */
+
+[z1:polarform(z),z1:rectform(z)];/*número complejo en forma polar y binómia */
+
+[realpart(z),imagpart(z)];[realpart(z1),imagpart(z1)];/* parfe real y parte imaginaria de un número complejo */
+
+[z,  abs(z), carg(z)];/* módulo y argumento de un número complejo*/
+
+[z,conjugate(z),abs(conjugate(z)),carg(conjugate(z))];/* conjugado de un número complejo */
+
+[z2:3+4*%i,z3:3-4*%i,z4:z2/z3,z5:z2*z3];
+
+[rectform(z4),rectform(z5)];

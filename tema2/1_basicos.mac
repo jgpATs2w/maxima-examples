@@ -1,0 +1,45 @@
+
+/*
+EJEMPLOS CON FUNCIONES BÁSICAS*/
+binomial(5,2); /* coeficiente distribución binomial o número combinatorio 5!/(3!·2!)*/
+denom(9/2);/* Obtención de denominador de expresión */
+[exp(2),exp(2.0)]
+
+[factorial(5),5!,factorial(5.6),5.6!]/*  Factorial de un número.  Para todo x --> factorial(x)=gamma(x+1)*/;
+
+[factorial(3),gamma(4),gamma(4.1)]/*función gamma*/;
+
+[log(12), log(10),log(12.0),log(10.0)];/* Logaritmo neperiano;  Maxima no tiene la función logaritmo decimal)*/
+
+[sqrt(2),2^(1/2),    sqrt(2.0),   2.0^(1/2),2^(1.0/2)];
+
+
+kill(all)$
+
+fpprec:30;
+
+[bfloat((%pi)^200),float((%pi)^200)];/* Números decimales*/
+
+fpprec:16;
+
+[ceiling(12.1),ceiling(12),ceiling(12.0),ceiling(-12.1)];/* menor entero superior o igual*/
+
+[entier(12),entier(12.1),entier(-12.1),entier(13),entier(13.1),entier(-13.1)];/* parte enteral */
+
+[floor(12),floor(12.1),floor(-12.1),floor(13),floor(13.1),floor(-13.1)];/* parte entera */
+
+[round(12),round(12.1),round(12.5),round(12.7),round(13),round(13.1),round(13.5),round(13.7)]/* fundión redondear, cuidado con el redondeo cuando la parte no decimal es par*/;
+
+[fib(1),fib(2),fib(6)];/* términos de la sucesión de Fibonacci */
+
+[mod(23,5),mod(23.3,5)];/* resto división, mod(x,y) = x - y*floor(x/y) */
+
+[next_prime(19),next_prime(20),next_prime(5000)];/* obtención del siguiente número primo */
+
+[primep(31),primep(32)];/* averigua si un número es primo */
+
+[random(10), random(10.7)]/* randon(x); si x es natural, devuelve aleatorio entre [0,x-1]si x es decimal devuelve un número aleatorio positivo <x */;
+
+beta(5,2);/* beta(a,b)=gamma(b)/(gamma(a+b)) */
+
+salida; a;b;

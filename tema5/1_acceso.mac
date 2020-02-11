@@ -1,0 +1,2 @@
+A:read_matrix(file_search("datos2.txt"));
+
